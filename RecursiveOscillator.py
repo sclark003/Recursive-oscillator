@@ -1,8 +1,9 @@
 import numpy as np
 from math import*
-import matplotlib.pyplot as plt
 
 class Oscillator:
+    #oscillate at frequency f
+    #buffer length l
     def __init__(self, f,l):
         self.l = l
         self.f = f
@@ -19,14 +20,3 @@ class Oscillator:
             self.y_two = self.y_one
             self.y_one = self.buffer_y[i]            
         return self.buffer_y
-            
-            
-a = Oscillator(440,10000)
-b = a.oscillate()
-c = np.fft.fft(b)
-freq = np.linspace(0, 44100, len(c))
-
-plt.figure(1)
-plt.plot(b)
-plt.figure(2)
-plt.plot(freq,c)
